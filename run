@@ -44,8 +44,10 @@ case "$1" in
 
     ./run check
 
+    quarto render reports/templates/olive_oil.qmd --output-dir ../
+
     echo
-    echo "Week 5 integration tests not yet available"
+    echo "Week 5 rendering report"
     echo
     ;;
 

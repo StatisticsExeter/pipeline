@@ -14,6 +14,7 @@ query = Path("sql/penguin_body_mass.sql").read_text()
 df = run_query("data/inter.duckdb", query)
 # Check we have loaded data
 print(df.head())
+df.to_csv("artefacts/penguins.csv")
 # Produce a summary
 # Move this code to a testable function and import it
 summary = (df.groupby("sex")["body_mass_g"].agg(count="count",
