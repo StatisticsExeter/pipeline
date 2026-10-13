@@ -6,6 +6,7 @@ This repository assumes that you are already comfortable using Python and pandas
 
 ## Create your own repository
 
+1. Create a new private repository using this repository as a template. Call your repository `pipeline-<STUDENT NUMBER>` replacing `<STUDENT NUMBER>` with your own student number
 2. We recommend keeping this repository *private* so that your work is not visible to others.
 3. Clone your repository:
 ```bash 
