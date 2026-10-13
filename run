@@ -47,7 +47,7 @@ case "$1" in
     quarto render reports/templates/olive_oil.qmd --output-dir ../
 
     echo
-    echo "Week 5 rendering report"
+    echo "Rendering week 5 report"
     echo
     ;;
 
@@ -64,8 +64,10 @@ case "$1" in
 
     ./run check
 
+    pytest integration_tests/test_week6.py
+
     echo
-    echo "Week 6 integration tests not yet available"
+    echo "Week 6 integration tests"
     echo
     ;;
 
@@ -73,9 +75,29 @@ case "$1" in
 
     ./run check
 
+    python scripts/week6.py \
+      --database data/inter.duckdb \
+      --query-file sql/penguin_body_mass.sql \
+      --snapshot-file artefacts/penguins.csv \
+      --boxplot-file artefacts/penguins_box.png
+    ;;
+
+  penguins)
+
+    ./run check
+
     shift
 
-    dvc repro "$@"
+    dvc repro penguins
+    ;;
+
+  olives)
+
+    ./run check
+
+    shift
+
+    dvc repro report_olive_oil
     ;;
 
   help)
@@ -99,10 +121,17 @@ case "$1" in
     echo "      Run Week 5 Click script"
     echo
     echo "  ./run week6"
-    echo "      Run Week 6 tests"
+    echo "      Run Week 6 integration tests"
     echo
     echo "  ./run script6"
-    echo "      Run DVC pipeline"
+    echo "      Run week 6 script"
+    echo
+    echo
+    echo "  ./run penguins"
+    echo "      Run the penguin DVC pipeline"
+    echo
+    echo "  ./run olives"
+    echo "      Run the olive oil DVC pipeline"
     echo
     ;;
 
